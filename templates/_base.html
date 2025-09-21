@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Bookstore</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Bookstore</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,17 +38,20 @@ gle navigation"
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <form action="{% url 'logout' %}" method="POST">
-                {% csrf_token %}
-                <button type="submit">Log Out</button>
-              </form>
+              <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="nav-link btn btn-link p-0 m-0 align-baseline">
+                  Log out
+          </button>
+          </form>
+
             </li>
                 {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Log In</a>
+              <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+              <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
             </li>
             {% endif %}
           </ul>
