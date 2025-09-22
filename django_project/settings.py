@@ -8,10 +8,20 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
+
 """
 
 from pathlib import Path
+from environs import Env
 
+env = Env()
+env.read_env()
+
+SECRET_KEY = env.str("DJANGO_SECRET_KEY")
+# DEBUG = env.bool("DJANGO_DEBUG", default=False)
+
+
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +33,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bb1_y8w_v_te@1#m&8%lep77+kkf7f7rpdor-m%9ylwjf=xce-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =[".herokuapp.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -86,15 +96,19 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#     "ENGINE": "django.db.backends.postgresql",
+#     "NAME": "postgres",
+#     "USER": "postgres",
+#     "PASSWORD": "postgres",
+#     "HOST": "db",
+#     "PORT": 5432,
+#     }
+# }
 DATABASES = {
-    "default": {
-    "ENGINE": "django.db.backends.postgresql",
-    "NAME": "postgres",
-    "USER": "postgres",
-    "PASSWORD": "postgres",
-    "HOST": "db",
-    "PORT": 5432,
-    }
+    "default": env.dj_db_url("DATABASE_URL",
+    default="postgres://postgres@db/postgres")
 }
 
 
@@ -156,3 +170,5 @@ ACCOUNT_USERNAME_REQUIRED=False
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD='email'
 ACCOUNT_UNIQUE_EMAIL=True
+
+SECRET_KEY = "django-insecure-hv1(e0r@v4n4m6gqdz%dn(60o=dsy8&@0_lbs8p-v3u^bs4)xl"
