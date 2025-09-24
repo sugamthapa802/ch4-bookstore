@@ -21,7 +21,7 @@ SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 # DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
 
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+# SECRET_KEY = env("DJANGO_SECRET_KEY")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -171,4 +171,5 @@ ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD='email'
 ACCOUNT_UNIQUE_EMAIL=True
 
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
 SECRET_KEY = "django-insecure-hv1(e0r@v4n4m6gqdz%dn(60o=dsy8&@0_lbs8p-v3u^bs4)xl"
