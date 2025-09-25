@@ -30,7 +30,7 @@ class AboutPageTests(SimpleTestCase):
     def test_about_uses_correct_template(self):
         self.assertTemplateUsed(self.response,'about.html')
     def test_about_page_contains_correct_html(self):
-        self.assertContains(self.response,'About page')
+        self.assertContains(self.response,'about page')
     def test_about_url_resolves_AboutPageView(self):
         view=resolve('/about/')
         self.assertEqual(view.func.__name__,AboutPageView.as_view().__name__)
