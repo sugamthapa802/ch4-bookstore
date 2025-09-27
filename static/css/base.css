@@ -1,3 +1,12 @@
 h1 {
     color: red
 }
+.bookcover {
+    width: 150px;        /* adjust for desired compact size */
+    height: 200px;       /* optional fixed height to align multiple covers */
+    object-fit: cover;   /* crop image to fit box without stretching */
+    border-radius: 4px;  /* optional: slightly rounded corners */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* optional subtle shadow */
+    margin: 5px;         /* spacing between images */
+    display: inline-block; /* keep multiple images in a row */
+}

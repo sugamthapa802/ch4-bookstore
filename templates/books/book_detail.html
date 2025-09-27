@@ -1,8 +1,12 @@
 {% extends "_base.html" %}
-{% block title %} book.title{% endblock title %}
+{% block title %} {{book.title}}{% endblock title %}
 {% block content %}
 <div class='mt-5 pt-5'>
     <div class='book-detail'>
+        {% if book.image %}
+         <img class="bookcover" src="{{ book.image.url}}" alt="{{ book.title }}">
+        {% endif %}
+   
     <h2><a href="">{{ book.title }}</a></h2>
     <p>Author: {{ book.author }}</p>
     <p>Price: {{ book.price }}</p>
@@ -10,7 +14,7 @@
     <h3>Reviews</h3>
     <ul>
         {% for review in book.reviews.all  %}
-        <li>{{review.review}} {{review.user}}
+        <li>{{review.review}} ,written by : {{review.user}}
         </li>
         
         {% endfor %}
