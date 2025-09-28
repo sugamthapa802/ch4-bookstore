@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+<div class='mt-5 pt-5'>
+{% block content %}
+<h1> Search results: </h1>
+{% for book in book_list  %}
+<div>
+    <a href="{{book.get_absolute_url }}">{{book.title}}</a>
+    <p>Author : {{book.author}}</p>
+    <p>Price : $ {{book.price}}</p>
+</div>
+
+{% endfor %}
+{% endblock content %}
+</div>
+
+
